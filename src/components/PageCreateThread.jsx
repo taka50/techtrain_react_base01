@@ -1,8 +1,10 @@
 import { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 export const PageCreateThread = () => {
     const titleText = useRef("");
     const isPosting = useRef(false);
+    const navigate = useNavigate();
     
     const [errorText, setErrorText] = useState("");
 
@@ -61,6 +63,7 @@ export const PageCreateThread = () => {
                 console.log("createThread : 作成成功");
                 console.log("createThread : home画面に戻ります");
                 setErrorText("");
+                navigate("/");
                 break;
             case CODE_VAL_ERROR:
                 console.log("createThread : 作成失敗（バリデーションエラー）");
@@ -86,9 +89,9 @@ export const PageCreateThread = () => {
             <div className="PageCreateThread">
                 <h2>スレッド新規作成</h2>
                 <input type="text" onChange={(e) => {titleText.current = e.target.value}}></input>
+                <p>{errorText}</p>
                 <div className="buttonContainer">
-                    <p>{errorText}</p>
-                    <button>TOPに戻る</button>
+                    <Link to="/">TOPに戻る</Link>
                     <button onClick={createThread}>作成</button>
                 </div>
             </div>
