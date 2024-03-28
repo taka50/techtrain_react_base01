@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import styles from "../styles/Header.module.css"
+
 export const Header = () => {
     return (
         <>
-            <header>
+            <header className={styles.header}>
                 <h1>
                     <Link to="/">掲示板</Link>
                 </h1>
