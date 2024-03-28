@@ -1,12 +1,12 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 export const PageCreateThread = () => {
-    const titleText = useRef("");
-    const isPosting = useRef(false);
-    const navigate = useNavigate();
-    
+    const [titleText, setTitleText] = useState("");
+    const [isPosting, setIsPosting] = useState(false);
     const [errorText, setErrorText] = useState("");
+
+    const navigate = useNavigate();
 
     const CODE_SUCCESS = 200;
     const CODE_VAL_ERROR = 400;
@@ -14,13 +14,13 @@ export const PageCreateThread = () => {
     const CODE_CNCT_ERROR = -100;
 
     const isTitleBlankOrEmpty = () => {
-        return (!titleText.current || !titleText.current.match(/\S/g));
+        return (!titleText || !titleText.match(/\S/g));
     };
 
     const sendThreadData = async () => {
         console.log("sendThreadData : 開始")
         const url = "https://railway.bulletinboard.techtrain.dev/threads";
-        const body = {title : titleText.current};
+        const body = {title : titleText};
         const params = {method : "POST", body : JSON.stringify(body)};
 
         try {
@@ -40,23 +40,23 @@ export const PageCreateThread = () => {
     const createThread = async () => {
         console.log("createThread : 開始");
 
-        if(isPosting.current){
+        if(isPosting){
             console.log("createThread : 投稿処理中")
             console.log("createThread : 終了");
             return;
-        }else{
-            isPosting.current = true;
         }
 
         if(isTitleBlankOrEmpty()){
             setErrorText("タイトルを入力してください");
-            isPosting.current = false;
+            setIsPosting(false);
             console.log("createThread : 終了");
             return 
         }
 
+        setIsPosting(true);
         const result = await sendThreadData();
         console.log("result :" + String(result));
+        setIsPosting(false);
 
         switch(result){
             case CODE_SUCCESS:
@@ -80,7 +80,6 @@ export const PageCreateThread = () => {
                 console.log("createThread : 未定義の通信結果")
         }
 
-        isPosting.current = false;
         console.log("createThread : 終了");
     }
 
@@ -88,12 +87,13 @@ export const PageCreateThread = () => {
         <>
             <div className="PageCreateThread">
                 <h2>スレッド新規作成</h2>
-                <input type="text" onChange={(e) => {titleText.current = e.target.value}}></input>
+                <input type="text" onChange={(eve) => setTitleText(eve.target.value)}></input>
                 <p>{errorText}</p>
                 <div className="buttonContainer">
                     <Link to="/">TOPに戻る</Link>
-                    <button onClick={createThread}>作成</button>
+                    <button onClick={createThread} disabled={isPosting}>作成</button>
                 </div>
+                <p>titleText : {titleText}</p>
             </div>
         </>
     )
