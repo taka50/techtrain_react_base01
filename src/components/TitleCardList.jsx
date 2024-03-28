@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { TitleCard } from "./TitleCard";
 
 export const TitleCardList = () => {
-    const [titleObjs, setTitleObj] = useState([]);
+    const [titles, setTitles] = useState([]);
 
     /* APIから直近10件のスレッドのIDとタイトルを取得 */
     useEffect(() => {
@@ -10,19 +10,19 @@ export const TitleCardList = () => {
         fetch("https://railway.bulletinboard.techtrain.dev/threads?offset=0")
           .then((response) => response.json())
           .then((data) => {
-            setTitleObj((titleObjs) => data);
+            setTitles((prevTitles) => data);
           })
           .catch((error) => {
             console.log(error);
           });
     }, []);
 
-    console.log(titleObjs);
+    console.log(titles);
 
     return (
         <>
             <div className="TitleCardList">
-                { titleObjs.map((titleObj) => <TitleCard key={titleObj.id} id={titleObj.id}>{titleObj.title}</TitleCard>) }
+                { titles.map((title) => <TitleCard key={title.id} id={title.id}>{title.title}</TitleCard>) }
             </div>
         </>
     );
