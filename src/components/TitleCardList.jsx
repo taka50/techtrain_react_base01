@@ -8,22 +8,24 @@ export const TitleCardList = () => {
     useEffect(() => {
         console.log("TitleCardList : get thread from api.");
         fetch("https://railway.bulletinboard.techtrain.dev/threads?offset=0")
-          .then((response) => response.json())
-          .then((data) => {
-            setTitles((prevTitles) => data);
-          })
-          .catch((error) => {
-            console.log(error);
-          });
+            .then((response) => response.json())
+            .then((data) => {
+                setTitles((prevTitles) => data);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }, []);
 
     console.log(titles);
 
     return (
-        <>
-            <div className="TitleCardList">
-                { titles.map((title) => <TitleCard key={title.id} id={title.id}>{title.title}</TitleCard>) }
-            </div>
-        </>
+        <div className="TitleCardList">
+            {titles.map((title) => (
+                <TitleCard key={title.id} id={title.id}>
+                    {title.title}
+                </TitleCard>
+            ))}
+        </div>
     );
 };
