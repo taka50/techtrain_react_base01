@@ -63,6 +63,7 @@ export const PageCreateThread = () => {
                 console.log("createThread : 作成成功");
                 console.log("createThread : home画面に戻ります");
                 setErrorText("");
+                setTitleText("");
                 navigate("/");
                 break;
             case CODE_VAL_ERROR:
@@ -93,11 +94,16 @@ export const PageCreateThread = () => {
             <input
                 type="text"
                 onChange={(eve) => setTitleText(eve.target.value)}
+                placeholder="スレッドタイトル"
+                value={titleText}
             ></input>
             <p>{errorText}</p>
             <div className="buttonContainer">
                 <Link to="/">TOPに戻る</Link>
-                <button onClick={createThread} disabled={isPosting}>
+                <button
+                    onClick={createThread}
+                    disabled={isPosting || isTitleBlankOrEmpty()}
+                >
                     作成
                 </button>
             </div>
