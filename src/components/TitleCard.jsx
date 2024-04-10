@@ -1,3 +1,4 @@
+import styles from "../styles/TitleCard.module.css";
 import { Link } from "react-router-dom";
 
 export const TitleCard = (props) => {
@@ -6,12 +7,9 @@ export const TitleCard = (props) => {
     // console.log("threadId : " + String(id));
 
     return (
-        <div className="TitleCard">
-            {/* <Link to={url} state={{title: children, id: id}}  >
-                <h3>{props.children}</h3>
-            </Link> */}
+        <div className={styles["title-card"]}>
             <Link to={`/thread?id=${id}&title=${children}`}>
-                <h3>{props.children}</h3>
+                <h3 className={styles["title-card-text"]}>{props.children}</h3>
             </Link>
         </div>
     );

@@ -1,0 +1,30 @@
+.title-card {
+    background-color: #ffffff;
+    border: solid 1px #000000;
+    border-radius: 4px;
+    padding: 8px 8px 16px;
+    margin: 1px 0px;
+}
+
+.title-card a {
+    display: block;
+}
+
+.title-card-link {
+    text-decoration: none;
+    &:visited {
+        text-decoration: none;
+    }
+
+    &:active {
+        text-decoration: none;
+    }
+
+    &:hover {
+        background-color: aqua;
+    }
+}
+
+.title-card-text {
+    font-size: 30px;
+}

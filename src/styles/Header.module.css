@@ -1,5 +1,41 @@
 .header {
     display: flex;
-    justify-content: space-between; 
-    background-color: darkturquoise;
+    justify-content: space-between;
+    background-color: #66d48b;
+    padding: 34px 34px;
+    align-items: center;
+}
+
+.home-link a {
+    font-size: 40px;
+    text-decoration: none;
+    color: white;
+    text-align: center;
+
+    &:visited {
+        color: white;
+        text-decoration: none;
+    }
+
+    &:active {
+        color: white;
+        text-decoration: none;
+    }
+}
+
+.create-thread-link a {
+    font-size: 24px;
+    text-decoration: underline;
+    color: white;
+    text-align: center;
+
+    &:visited {
+        color: white;
+        text-decoration: none;
+    }
+
+    &:active {
+        color: white;
+        text-decoration: none;
+    }
 }

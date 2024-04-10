@@ -1,4 +1,6 @@
 import { useState, useEffect } from "react";
+
+import styles from "../styles/TitleCardList.module.css";
 import { TitleCard } from "./TitleCard";
 
 export const TitleCardList = () => {
@@ -20,7 +22,7 @@ export const TitleCardList = () => {
     console.log(titles);
 
     return (
-        <div className="TitleCardList">
+        <div className={styles["title-card-list"]}>
             {titles.map((title) => (
                 <TitleCard key={title.id} id={title.id}>
                     {title.title}

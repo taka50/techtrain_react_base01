@@ -1,0 +1,11 @@
+.container {
+    width: 562px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.header-text {
+    color: #1e1e1e;
+    font-size: 40px;
+    margin: 24px 0;
+}
