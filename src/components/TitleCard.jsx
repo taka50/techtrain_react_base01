@@ -7,10 +7,10 @@ export const TitleCard = (props) => {
     // console.log("threadId : " + String(id));
 
     return (
-        <div className={styles["title-card"]}>
-            <Link to={`/thread?id=${id}&title=${children}`}>
+        <Link to={`/thread?id=${id}&title=${children}`}>
+            <div className={styles["title-card"]}>
                 <h3 className={styles["title-card-text"]}>{props.children}</h3>
-            </Link>
-        </div>
+            </div>
+        </Link>
     );
 };
