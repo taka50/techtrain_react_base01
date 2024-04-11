@@ -1,3 +1,12 @@
-.page-thread {
+.container {
     display: flex;
+}
+
+.posts {
+}
+
+.header-text {
+    color: #1e1e1e;
+    font-size: 40px;
+    margin: 32px 0;
 }

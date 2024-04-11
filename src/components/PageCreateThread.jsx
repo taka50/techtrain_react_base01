@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import styles from "../styles/PageCreateThread.module.css";
+
 export const PageCreateThread = () => {
     const [titleText, setTitleText] = useState("");
     const [isPosting, setIsPosting] = useState(false);
@@ -89,18 +91,22 @@ export const PageCreateThread = () => {
     };
 
     return (
-        <div className="PageCreateThread">
-            <h2>スレッド新規作成</h2>
+        <div className={styles["container"]}>
+            <h2 className={styles["header-text"]}>スレッド新規作成</h2>
             <input
+                className={styles["title-input"]}
                 type="text"
                 onChange={(eve) => setTitleText(eve.target.value)}
                 placeholder="スレッドタイトル"
                 value={titleText}
             ></input>
             <p>{errorText}</p>
-            <div className="buttonContainer">
-                <Link to="/">TOPに戻る</Link>
+            <div className={styles["btm-ui-container"]}>
+                <Link to="/" className={styles["top-link"]}>
+                    TOPに戻る
+                </Link>
                 <button
+                    className={styles["create-button"]}
                     onClick={createThread}
                     disabled={isPosting || isTitleBlankOrEmpty()}
                 >

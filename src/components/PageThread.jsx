@@ -94,9 +94,9 @@ export const PageThread = () => {
     }, [updatePosts]);
 
     return (
-        <div className={styles["page-thread"]}>
-            <div className="PostsContainer">
-                <h2>{title}</h2>
+        <div className={styles["container"]}>
+            <div className={styles["posts"]}>
+                <h2 className={styles["header-text"]}>{title}</h2>
                 <p>{errorText}</p>
                 <PostCardList posts={posts} />
             </div>
