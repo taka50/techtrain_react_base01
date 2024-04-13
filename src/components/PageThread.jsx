@@ -94,13 +94,26 @@ export const PageThread = () => {
     }, [updatePosts]);
 
     return (
+        // <div className={styles["container"]}>
+        //     <div className={styles["posts-container"]}>
+        //         <h2 className={styles["header-text"]}>{title}</h2>
+        //         <p>{errorText}</p>
+        //         <PostCardList posts={posts} />
+        //     </div>
+        //     <div className={styles["form-contaier"]}>
+        //         <PostForm updatePosts={updatePosts} threadId={threadId} />
+        //     </div>
+        // </div>
+
         <div className={styles["container"]}>
-            <div className={styles["posts"]}>
-                <h2 className={styles["header-text"]}>{title}</h2>
-                <p>{errorText}</p>
+            <h2 className={styles["header-text"]}>{title}</h2>
+            <p>{errorText}</p>
+            <div className={styles["posts-container"]}>
                 <PostCardList posts={posts} />
             </div>
-            <PostForm updatePosts={updatePosts} threadId={threadId} />
+            <div className={styles["form-contaier"]}>
+                <PostForm updatePosts={updatePosts} threadId={threadId} />
+            </div>
         </div>
     );
 };

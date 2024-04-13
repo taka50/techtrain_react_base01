@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styles from "../styles/PostForm.module.css";
 
 export const PostForm = (props) => {
     const { updatePosts, threadId } = props;
@@ -45,7 +46,7 @@ export const PostForm = (props) => {
         }
 
         if (isPostBlankOrEmpty()) {
-            setErrorText("タイトルを入力してください");
+            setErrorText("文章を入力してください");
             setIsPosting(false);
             console.log("createPost : 終了");
             return;
@@ -89,8 +90,9 @@ export const PostForm = (props) => {
     };
 
     return (
-        <div className="PostForm">
+        <div>
             <textarea
+                className={styles["post-input"]}
                 rows="5"
                 cols="33"
                 placeholder="投稿しよう！"
@@ -102,6 +104,7 @@ export const PostForm = (props) => {
             <p>{errorText}</p>
             <div>
                 <button
+                    className={styles["submit-button"]}
                     disabled={isPostBlankOrEmpty() || isPosting}
                     onClick={createPost}
                 >

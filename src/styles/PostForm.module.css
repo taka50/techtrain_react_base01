@@ -1,0 +1,27 @@
+.post-input {
+    font-size: 20px;
+    width: 374px;
+    height: 164px;
+    background-color: #ffffff;
+    padding: 12px;
+    border-radius: 2px;
+    margin-bottom: 32px;
+}
+
+.submit-button {
+    width: 374px;
+    height: 62px;
+    font-size: 32px;
+    text-align: center;
+    background-color: #66d48b;
+    color: #ffffff;
+    border-radius: 5px;
+
+    &:disabled {
+        opacity: 0.3;
+    }
+
+    &:active {
+        background-color: #66d48b7e;
+    }
+}
